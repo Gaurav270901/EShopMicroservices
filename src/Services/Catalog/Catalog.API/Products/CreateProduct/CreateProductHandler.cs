@@ -1,6 +1,4 @@
-﻿using BuildingBlocks.CQRS;
-using MediatR;
-
+﻿
 namespace Catalog.API.Products.CreateProduct
 {
 //You send a command(CreateProductCommand) to MediatR.
@@ -13,12 +11,26 @@ namespace Catalog.API.Products.CreateProduct
         : ICommand<CreateProductResult>; // when mediatr see request coming as this record then it will trigger handler 
     public record CreateProductResult(Guid Id);
 
-    internal class CreateProductCommandHandler : ICommandHandler<CreateProductCommand, CreateProductResult>
+    internal class CreateProductCommandHandler(IDocumentSession session) 
+        : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         //business logic goes here
-        public Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
+        public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var product = new Product
+            {
+                Name = command.Name,
+                Category = command.Category,
+                Description = command.Description,
+                ImageFile = command.ImageFile,
+                Price = command.Price
+            };
+
+            session.Store(product); 
+            await session.SaveChangesAsync(cancellationToken); //persist to database
+
+            var result = new CreateProductResult(Guid.NewGuid());
+            return result;
         }
     }
 }
