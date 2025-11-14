@@ -1,7 +1,11 @@
 
+using Catalog.API.Products.DeleteProduct;
 using Catalog.API.Products.GetProduct;
+using Catalog.API.Products.GetProductByCategory;
 using Catalog.API.Products.GetProductById;
 using Catalog.API.Products.GetProducts;
+using Catalog.API.Products.UpdateProduct;
+using Marten.Linq.CreatedAt;
 
 namespace Catalog.API.Products.CreateProduct
 {
@@ -22,6 +26,10 @@ namespace Catalog.API.Products.CreateProduct
 
             CreateMap<GetProductResult, GetProductResponse>().ReverseMap();
             CreateMap<GetProductByIdResonse , GetProductByIdResult>().ReverseMap();
+            CreateMap<GetProductByCategoryResponse, GetProductByCategoryResult>().ReverseMap();
+            CreateMap<UpdateProductCommand, UpdateProductRequest>().ReverseMap();
+            CreateMap<UpdateProductResponse, UpdateProductResult>().ReverseMap();
+            CreateMap<DeleteProductResponse, DeleteProductResult>().ReverseMap();
         }
     }
 }
