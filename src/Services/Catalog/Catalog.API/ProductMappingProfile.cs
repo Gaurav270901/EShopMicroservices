@@ -1,4 +1,8 @@
 
+using Catalog.API.Products.GetProduct;
+using Catalog.API.Products.GetProductById;
+using Catalog.API.Products.GetProducts;
+
 namespace Catalog.API.Products.CreateProduct
 {
     internal class ProductMappingProfile : Profile
@@ -15,6 +19,9 @@ namespace Catalog.API.Products.CreateProduct
 
            CreateMap<CreateProductResult, CreateProductResponse>()
                 .ConstructUsing(src => new CreateProductResponse(src.Id));
+
+            CreateMap<GetProductResult, GetProductResponse>().ReverseMap();
+            CreateMap<GetProductByIdResonse , GetProductByIdResult>().ReverseMap();
         }
     }
 }

@@ -26,6 +26,7 @@ namespace Catalog.API.Products.CreateProduct
                 Price = command.Price
             };
 
+            //marten will check db and if there is not schema for product it will automtically get created in postgres
             session.Store(product); 
             await session.SaveChangesAsync(cancellationToken); //persist to database
 
