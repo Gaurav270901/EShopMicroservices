@@ -10,6 +10,10 @@ using MediatR;
 
 namespace BuildingBlocks.Behavior
 {
+    // This behavior intercepts commands before they reach their respective handlers to perform validation.
+    // It uses FluentValidation to validate the command based on the defined validators.
+    // If validation fails, it throws a ValidationException containing all validation errors.
+    // To use this behavior, register it in the DI container as an open generic type.
     public class ValidationBehavior<TRequest, TResponse>
         (IEnumerable<IValidator<TRequest>> validators)
         : IPipelineBehavior<TRequest, TResponse>

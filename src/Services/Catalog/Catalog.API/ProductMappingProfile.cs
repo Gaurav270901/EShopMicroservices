@@ -30,6 +30,7 @@ namespace Catalog.API.Products.CreateProduct
             CreateMap<UpdateProductCommand, UpdateProductRequest>().ReverseMap();
             CreateMap<UpdateProductResponse, UpdateProductResult>().ReverseMap();
             CreateMap<DeleteProductResponse, DeleteProductResult>().ReverseMap();
+            CreateMap<GetProductsQuery , GetProductRequest>().ReverseMap();
         }
     }
 }
