@@ -3,6 +3,9 @@ version: '3.8' # Specify the Docker Compose file format version
 services:
   catalogdb: # Name of your database service
     image: postgres:16 # Use the official PostgreSQL image, specifying a version
+
+  basketdb:
+    image: postgres:16
  
 
   catalog.api:
@@ -13,3 +16,4 @@ services:
 
 volumes:
   postgres_catalog: # Define the named volume for data persistence
+  postgres_basket:
