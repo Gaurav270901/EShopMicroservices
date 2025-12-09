@@ -2,6 +2,9 @@
 //things to do 
 //learn about proxy pattern and decorator pattern
 //scrutor library
+//microservices communicaiton type synchronous vs asynchronous
+//amqp - advanced message queuing protocol
+//gRPC - remote procedure call
 
 
 using HealthChecks.UI.Client;
