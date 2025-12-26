@@ -9,6 +9,7 @@
 
 using Discount.Grpc;
 using HealthChecks.UI.Client;
+using BuildingBlocks.Messaging.MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -63,6 +64,9 @@ builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
 
     return handler;
 });
+
+//add message broker services 
+builder.Services.AddMessageBroker(builder.Configuration);
 
 var app = builder.Build();
 
