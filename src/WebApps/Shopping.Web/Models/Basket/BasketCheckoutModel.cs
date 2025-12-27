@@ -24,8 +24,6 @@
     }
 
     // wrapper classes
-    //we need to give same parameter name as per our microservices otherwise
-    // it will not map to the request 
     public record CheckoutBasketRequest(BasketCheckoutModel BasketCheckoutDto);
     public record CheckoutBasketResponse(bool IsSuccess);
 }
